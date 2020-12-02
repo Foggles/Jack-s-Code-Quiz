@@ -1,18 +1,34 @@
+import {questions} from "./questions.js";
+
 let startButton = document.querySelector("#start-button");
 let timeDisplay = document.querySelector("#time-display");
 let infoDisplay = document.querySelector("#info");
+let questions = questions;
 let questionsDisplay = document.querySelector("#questions-display");
 let timeRemaining = 75;
+
 
 function startTimer() {
     setInterval(function () {
         timeRemaining = timeRemaining - 1;
         timeDisplay.textContent = "Time Remaining: " + timeRemaining;
     }, 1000);
+
+    if (timeRemaining === 0) {
+        clearInterval;
+    };
 };
 
 function buildQuiz() {
+    const output = [];
 
+    questions.forEach(
+        (currentQuestion, questionNumber) => {
+            const answers = [];
+
+            for(letter in currentQuestion.choices)
+        }
+    )
 };
 
 // When the start quiz button is clicked (add event listerning to the start button)

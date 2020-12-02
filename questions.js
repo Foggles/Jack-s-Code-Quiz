@@ -8,24 +8,13 @@ const questions = [
         name: "Commonly used data types DO NOT include: ",
         choices: [
             {
-                name: "1. Strings",
-                isAnswer = false,
+                1: "Strings",
+                2: "Booleans",
+                3: "Alerts",
+                4: "Numbers"
             },
 
-            {
-                name: "2. Booleans",
-                isAnswer = false,
-            },
-
-            {
-                name: "3. Alerts",
-                isAnswer = true,
-            },
-
-            {
-                name: "4. Numbers",
-                isAnswer = false,
-            },
+            correctAnswer = "3"
         ],
     },
 
@@ -34,24 +23,13 @@ const questions = [
         name: "The condition in an if / else statement is enclosed within ____.",
         choices: [
             {
-                name: "1. Quotes",
-                isAnswer = false,
+                1: "Quotes",
+                2: "Curly Brackets",
+                3: "Parentheses",
+                4: "Square Brackets"
             },
 
-            {
-                name: "2. Curly Brackets",
-                isAnswer = false,
-            },
-
-            {
-                name: "3. Parentheses",
-                isAnswer = true,
-            },
-
-            {
-                name: "4. Square Brackets",
-                isAnswer = false,
-            },
+            correctAnswer = "3"
         ],
     },
 
@@ -60,24 +38,13 @@ const questions = [
         name: "Arrays in JavaScript can be used to store ____.",
         choices: [
             {
-                name: "1. Numbers & Strings",
-                isAnswer = false,
+                1: "Numbers & Strings",
+                2: "Other Arrays",
+                3: "Booleans",
+                4: "All of the Above"
             },
 
-            {
-                name: "2. Other Arrays",
-                isAnswer = false,
-            },
-
-            {
-                name: "3. Booleans",
-                isAnswer = false,
-            },
-
-            {
-                name: "4. All of the Above",
-                isAnswer = true,
-            },
+            correctAnswer = "4"            
         ],
     },
 
@@ -86,24 +53,13 @@ const questions = [
         name: "String values must be enclosed within ____ when being assigned to variables.",
         choices: [
             {
-                name: "1. Commas",
-                isAnswer = false,
+                1: "Commas",
+                2: "Curly Brackets",
+                3: "Quotes",
+                4: "Parentheses"
             },
 
-            {
-                name: "2. Curly Brackets",
-                isAnswer = false,
-            },
-
-            {
-                name: "3. Quotes",
-                isAnswer = true,
-            },
-
-            {
-                name: "4. Parentheses",
-                isAnswer = false,
-            },
+            correctAnswer = "3"
         ],
     },
 
@@ -112,25 +68,15 @@ const questions = [
         name: "A very useful tool used during development and debugging for printing content to the debugger is:",
         choices: [
             {
-                name: "1. JavaScript",
-                isAnswer = false,
+                1: "JavaScript",
+                2: "Terminal/Bash",
+                3: "For Loops",
+                4: "console.log"
             },
 
-            {
-                name: "2. Terminal / Bash",
-                isAnswer = false,
-            },
-
-            {
-                name: "3. For Loops",
-                isAnswer = false,
-            },
-
-            {
-                name: "4. console.log",
-                isAnswer = true,
-            },
+            correctAnswer = "4"
         ],
     },
 ];
 
+export {questions};
