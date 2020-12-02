@@ -1,17 +1,30 @@
+let startButton = document.querySelector("#start-button");
+let timeDisplay = document.querySelector("#time-display");
+let infoDisplay = document.querySelector("#info");
+let questionsDisplay = document.querySelector("#questions-display");
 let timeRemaining = 75;
 
 function startTimer() {
     setInterval(function () {
-        //timeRemaining--;
         timeRemaining = timeRemaining - 1;
+        timeDisplay.textContent = "Time Remaining: " + timeRemaining;
     }, 1000);
+};
+
+function buildQuiz() {
+
 };
 
 // When the start quiz button is clicked (add event listerning to the start button)
 // & start the timer (set Interval)
-
+startButton.addEventListener("click", startTimer()
+);
 
 // Update the DOM with the first question and display the choices assoc with the question.
+startButton.addEventListener("click", buildQuiz() );
+
+
+
 
 
 // If user selected the correct answer

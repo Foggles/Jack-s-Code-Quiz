@@ -2,7 +2,6 @@
 // 1. Name
 // 2. Choices
 // 3. Answer
-
 const questions = [
     // Object for first question
     { 
@@ -134,3 +133,4 @@ const questions = [
         ],
     },
 ];
+
