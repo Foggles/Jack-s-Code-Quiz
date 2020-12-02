@@ -1,0 +1,39 @@
+#highscore {
+    text-align: left;
+    text-decoration: none;
+    color: rgb(173, 6, 173);
+}
+
+#question {
+    text-align: center;
+    font-weight: bolder;
+}
+
+#info {
+    text-align: center;
+}
+
+button {
+    background-color: rgb(173, 6, 173);
+    color: white;
+    border-radius: 6px;
+    border: 0px;
+    font-size: 16px;
+    padding: 5px;
+    margin: auto;
+    display: block;
+}
+
+#start-button {
+    font-weight: bolder;
+}
+
+ol {
+    margin: auto;
+    display: block;
+}
+
+ul {
+    padding: 2px;
+    display: block;
+}
