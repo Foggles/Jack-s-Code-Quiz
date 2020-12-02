@@ -5,6 +5,7 @@ let timeDisplay = document.querySelector("#time-display");
 let infoDisplay = document.querySelector("#info");
 let questions = questions;
 let questionsDisplay = document.querySelector("#questions-display");
+let quizDisplay = document.querySelector(".quiz");
 let timeRemaining = 75;
 
 
@@ -26,9 +27,24 @@ function buildQuiz() {
         (currentQuestion, questionNumber) => {
             const answers = [];
 
-            for(letter in currentQuestion.choices)
+            for(letter in currentQuestion.choices){
+                
+                choices.push(
+                    `<label>
+                    <input type="radio" name="name${questionNumber}" value="${number}"
+                    ${number} :
+                    ${currentQuestion.choices[number]}
+                    <label>`
+                );
+            }
+
+            output.push(
+                `<div class="question"> ${currentQuestion.name} </div>
+                <div class="answers"> ${choices.join(' ')} </div>`
+            );
         }
-    )
+    );
+        quizDisplay.innerHTML = output.join(' ');
 };
 
 // When the start quiz button is clicked (add event listerning to the start button)
