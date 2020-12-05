@@ -1,11 +1,4 @@
-import {questions} from "./questions.js";
 
-let startButton = document.querySelector("#start-button");
-let timeDisplay = document.querySelector("#time-display");
-let infoDisplay = document.querySelector("#info");
-let questions = questions;
-let questionsDisplay = document.querySelector("#questions-display");
-let quizDisplay = document.querySelector(".quiz");
 let timeRemaining = 75;
 
 
@@ -15,45 +8,17 @@ function startTimer() {
         timeDisplay.textContent = "Time Remaining: " + timeRemaining;
     }, 1000);
 
-    if (timeRemaining === 0) {
-        clearInterval;
-    };
 };
 
-function buildQuiz() {
-    const output = [];
-
-    questions.forEach(
-        (currentQuestion, questionNumber) => {
-            const answers = [];
-
-            for(letter in currentQuestion.choices){
-                
-                choices.push(
-                    `<label>
-                    <input type="radio" name="name${questionNumber}" value="${number}"
-                    ${number} :
-                    ${currentQuestion.choices[number]}
-                    <label>`
-                );
-            }
-
-            output.push(
-                `<div class="question"> ${currentQuestion.name} </div>
-                <div class="answers"> ${choices.join(' ')} </div>`
-            );
-        }
-    );
-        quizDisplay.innerHTML = output.join(' ');
+function startQuiz() {
 };
 
 // When the start quiz button is clicked (add event listerning to the start button)
 // & start the timer (set Interval)
-startButton.addEventListener("click", startTimer()
-);
+startButton.addEventListener("click", startTimer);
 
 // Update the DOM with the first question and display the choices assoc with the question.
-startButton.addEventListener("click", buildQuiz() );
+startButton.addEventListener("click", startQuiz);
 
 
 
