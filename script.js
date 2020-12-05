@@ -36,8 +36,9 @@ function showQuestion(questionObj) {
   for (let index = 0; index < questionObj.choices.length; index++) {
       let answerButton = document.createElement("button");
       answerButton.innerText = questionObj.choices[index].answer;
-      answerButton.classList.add("btn");
+      answerButton.classList.add("btn", "answerButton");
       answerButton.addEventListener("click", selectAnswer);
+      answerButton.setAttribute("value", questionObj.choices[index].isAnswer);
       answerElement.appendChild(answerButton);
   };
   // DISPLAY ANSWERS
@@ -45,7 +46,21 @@ function showQuestion(questionObj) {
   // EVENT SHOULD INCREASE currentQuestionIndex
 };
 
-function selectAnswer() {};
+ function selectAnswer() {
+    debugger;
+    if (this.getAttribute("value") === "true") {
+        currentQuestionIndex = currentQuestionIndex + 1;
+    };
+
+    if (this.getAttribute("value") === "false") {
+        timeRemaining = timeRemaining - 10;
+        currentQuestionIndex = currentQuestionIndex + 1;
+    };
+
+    questionElement.innerHTML = "";
+    answerElement.innerHTML = "";
+    showQuestion(questions[currentQuestionIndex]);
+};
 
 // When the start quiz button is clicked (add event listerning to the start button)
 // & start the timer (set Interval)
