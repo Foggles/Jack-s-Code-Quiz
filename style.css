@@ -1,23 +1,24 @@
-#highscore {
-    text-align: left;
-    text-decoration: none;
-    color: rgb(173, 6, 173);
+body {
+    padding: 0;
+    margin: 0;
+    
 }
 
-#time-display {
-    text-align: right;
+.container {
+    width:  800px;
+    max-width: 80%;
+    border-radius: 5px;
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0 0 10px 2px;
+    width: 100vw;
+    height: 50vh;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
 }
 
-#question {
-    text-align: center;
-    font-weight: bolder;
-}
-
-#info {
-    text-align: center;
-}
-
-button {
+.btn {
     background-color: rgb(173, 6, 173);
     color: white;
     border-radius: 6px;
@@ -28,16 +29,38 @@ button {
     display: block;
 }
 
+.btn-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    margin: 20px 0;
+}
+
 #start-button {
     font-weight: bolder;
+    padding: 10px 20px;
 }
 
-ol {
-    margin: auto;
-    display: block;
+#highscore {
+    text-align: left;
+    text-decoration: none;
+    color: rgb(173, 6, 173);
+    margin-top: 0px;
 }
 
-ul {
-    padding: 2px;
-    display: block;
+#time-display {
+    text-align: right;
+}
+
+.hide {
+    display: none;
+}
+
+.btn-correct {
+    background-color: green;
+    color: black;
+}
+
+.btn-wrong {
+    background-color: red;
 }
