@@ -44,9 +44,13 @@ function startTimer() {
             textArea.textContent = "";
             textArea.classList.add("initials");
 
-            let submit = document.createElement("button");
-            submit.textContent = "Submit";
-            submit.classList.add("btn");
+            let submit = document.createElement("a");
+            submit.href = "./highscores.html";
+
+            let submitButton = document.createElement("button");
+            submitButton.textContent = "Submit";
+            submitButton.classList.add("btn");
+            submit.appendChild(submitButton);
 
             finalScore.textContent = "Your final score is " + timeRemaining;
             initials.textContent = "Enter initials:";
@@ -130,8 +134,9 @@ function selectAnswer() {
         textArea.textContent = "";
         textArea.classList.add("initials");
 
-        let submit = document.createElement("button");
+        let submit = document.createElement("a");
         submit.textContent = "Submit";
+        submit.href = "./highscores.html";
         submit.classList.add("btn");
 
         finalScore.textContent = "Your final score is " + timeRemaining;

@@ -7,10 +7,12 @@ let checkButton = document.querySelector(".check-btn");
 checkButton.addEventListener("click", checkForScores);
 clearButton.addEventListener("click", clearScores);
 
+let displayText;
+
 // Function to check for any highscores in the local storage
 function checkForScores() {
     if (localStorage.getItem("Score") !== null && localStorage.getItem("Initials") !== null) {
-        let displayText = document.createElement("p");
+        displayText = document.createElement("p");
 
         displayText.classList.add("bar");
 
