@@ -1,4 +1,14 @@
+import {questions} from "./questions.js";
 
+questionsList = questions;
+
+const startButton = document.getElementById("start-button");
+const questionContainerElement = document.getElementById("question-container");
+
+const shuffledQuestions;
+const currentQuestionIndex;
+
+let timeDisplay = document.getElementById("time-display");
 let timeRemaining = 75;
 
 
@@ -7,10 +17,23 @@ function startTimer() {
         timeRemaining = timeRemaining - 1;
         timeDisplay.textContent = "Time Remaining: " + timeRemaining;
     }, 1000);
-
 };
 
 function startQuiz() {
+    console.log("started");
+    startButton.classList.add("hide");
+    shuffledQuestions.questionsList.sort(() => Math.random() - .5);
+    currentQuestionIndex = 0;
+    questionContainerElement.classList.remove("hide");
+    setNextQuestion();
+};
+
+function setNextQuestion() {
+
+};
+
+function selectAnswer() {
+
 };
 
 // When the start quiz button is clicked (add event listerning to the start button)
