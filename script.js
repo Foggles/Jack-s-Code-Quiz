@@ -5,28 +5,31 @@ const startButton = document.getElementById("start-button");
 const questionContainerElement = document.getElementById("question-container");
 let highscore = document.getElementById("highscore");
 let gameOverScreen = document.getElementById("game-over");
+let timeDisplay = document.getElementById("time-display");
 
+// Defining undefined variables to be used later
 let timeScore;
 let textArea;
 let submit;
+let interval;
 
-// Variables to allow for questions to be randomised
+// Variable to store the current index
 let currentQuestionIndex;
 
-// Let variables for the timer to function
-let timeDisplay = document.getElementById("time-display");
+// Variable to store timeRemaining
 let timeRemaining = 75;
 
 // Function to start the timer
 function startTimer() {
-    setInterval(function () {
+    interval = setInterval(function () {
         timeRemaining = timeRemaining - 1;
         timeDisplay.textContent = "Time Remaining: " + timeRemaining;
 
         if (timeRemaining < 0) {
-            clearInterval(startTimer);
+            clearInterval(interval);
             timeScore = timeRemaining;
-            console.log(timeScore);
+            timeDisplay.textContent = timeRemaining;
+            console.log("Your score is " + timeScore);
             highscore.textContent = "";
 
             questionElement.innerHTML = "";
@@ -51,9 +54,6 @@ function startTimer() {
             gameOverScreen.appendChild(initials);
             gameOverScreen.appendChild(textArea);
             gameOverScreen.appendChild(submit);
-
-            timeRemaining = undefined;
-            timeDisplay.textContent = timeScore;
 
             submit.addEventListener("click", function () {
                 localStorage.setItem("Score", timeScore);
@@ -109,9 +109,11 @@ function selectAnswer() {
     answerElement.innerHTML = "";
 
     if (currentQuestionIndex === 5) {
-        clearInterval(startTimer);
+        clearInterval(interval);
         timeScore = timeRemaining;
-        console.log(timeScore);
+        timeDisplay.textContent = timeRemaining;
+
+        console.log("Your score is " + timeScore);
         highscore.textContent = "";
 
         questionElement.innerHTML = "";
@@ -136,9 +138,6 @@ function selectAnswer() {
         gameOverScreen.appendChild(initials);
         gameOverScreen.appendChild(textArea);
         gameOverScreen.appendChild(submit);
-
-        timeRemaining = undefined;
-        timeDisplay.textContent = timeScore;
 
         submit.addEventListener("click", function () {
             localStorage.setItem("Score", timeScore);
