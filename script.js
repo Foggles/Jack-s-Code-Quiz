@@ -25,8 +25,8 @@ function startTimer() {
 
         if (timeRemaining < 0) {
             clearInterval(startTimer);
-            timeRemaining =
-                timeDisplay.innerHTML = "0";
+            timeScore = timeRemaining;
+            console.log(timeScore);
             highscore.textContent = "";
 
             questionElement.innerHTML = "";
@@ -34,20 +34,33 @@ function startTimer() {
 
             questionElement.textContent = "All done!";
             let finalScore = document.createElement("p");
+
             let initials = document.createElement("p");
             let textArea = document.createElement("textarea");
-            textArea.textContent = "Initials Here"
+            textArea.textContent = "";
+            textArea.classList.add("initials");
+
             let submit = document.createElement("button");
             submit.textContent = "Submit";
             submit.classList.add("btn");
 
-            finalScore.textContent = "Your final score is 0";
+            finalScore.textContent = "Your final score is " + timeRemaining;
             initials.textContent = "Enter initials:";
 
             gameOverScreen.appendChild(finalScore);
             gameOverScreen.appendChild(initials);
             gameOverScreen.appendChild(textArea);
             gameOverScreen.appendChild(submit);
+
+            timeRemaining = undefined;
+            timeDisplay.textContent = timeScore;
+
+            submit.addEventListener("click", function () {
+                localStorage.setItem("Score", timeScore);
+    
+                textAreaValue = document.querySelector(".initials").value;
+                localStorage.setItem("Initials", textAreaValue);
+            });
 
         };
 
@@ -96,11 +109,9 @@ function selectAnswer() {
     answerElement.innerHTML = "";
 
     if (currentQuestionIndex === 5) {
-        debugger
         clearInterval(startTimer);
         timeScore = timeRemaining;
         console.log(timeScore);
-        timeDisplay.textContent = undefined;
         highscore.textContent = "";
 
         questionElement.innerHTML = "";
@@ -108,9 +119,12 @@ function selectAnswer() {
 
         questionElement.textContent = "All done!";
         let finalScore = document.createElement("p");
+
         let initials = document.createElement("p");
         let textArea = document.createElement("textarea");
         textArea.textContent = "";
+        textArea.classList.add("initials");
+
         let submit = document.createElement("button");
         submit.textContent = "Submit";
         submit.classList.add("btn");
@@ -123,9 +137,14 @@ function selectAnswer() {
         gameOverScreen.appendChild(textArea);
         gameOverScreen.appendChild(submit);
 
-        submit.addEventListener("click", function() {
-            localStorage.score = timeScore;
-            localStorage.initials = textArea.innerHTML;
+        timeRemaining = undefined;
+        timeDisplay.textContent = timeScore;
+
+        submit.addEventListener("click", function () {
+            localStorage.setItem("Score", timeScore);
+
+            textAreaValue = document.querySelector(".initials").value;
+            localStorage.setItem("Initials", textAreaValue);
         });
 
     }
