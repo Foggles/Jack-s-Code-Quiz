@@ -41,6 +41,10 @@ body {
     padding: 10px 20px;
 }
 
+#question {
+    font-weight: bold;
+}
+
 #highscore {
     text-align: left;
     text-decoration: none;
@@ -54,13 +58,4 @@ body {
 
 .hide {
     display: none;
-}
-
-.btn-correct {
-    background-color: green;
-    color: black;
-}
-
-.btn-wrong {
-    background-color: red;
 }

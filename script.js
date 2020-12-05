@@ -3,6 +3,12 @@ const questionElement = document.getElementById("question");
 const answerElement = document.getElementById("answer-buttons");
 const startButton = document.getElementById("start-button");
 const questionContainerElement = document.getElementById("question-container");
+let highscore = document.getElementById("highscore");
+let gameOverScreen = document.getElementById("game-over");
+
+let timeScore;
+let textArea;
+let submit;
 
 // Variables to allow for questions to be randomised
 let currentQuestionIndex;
@@ -13,41 +19,70 @@ let timeRemaining = 75;
 
 // Function to start the timer
 function startTimer() {
-  setInterval(function () {
-    timeRemaining = timeRemaining - 1;
-    timeDisplay.textContent = "Time Remaining: " + timeRemaining;
-  }, 1000);
+    setInterval(function () {
+        timeRemaining = timeRemaining - 1;
+        timeDisplay.textContent = "Time Remaining: " + timeRemaining;
+
+        if (timeRemaining < 0) {
+            clearInterval(startTimer);
+            timeRemaining =
+                timeDisplay.innerHTML = "0";
+            highscore.textContent = "";
+
+            questionElement.innerHTML = "";
+            answerElement.innerHTML = "";
+
+            questionElement.textContent = "All done!";
+            let finalScore = document.createElement("p");
+            let initials = document.createElement("p");
+            let textArea = document.createElement("textarea");
+            textArea.textContent = "Initials Here"
+            let submit = document.createElement("button");
+            submit.textContent = "Submit";
+            submit.classList.add("btn");
+
+            finalScore.textContent = "Your final score is 0";
+            initials.textContent = "Enter initials:";
+
+            gameOverScreen.appendChild(finalScore);
+            gameOverScreen.appendChild(initials);
+            gameOverScreen.appendChild(textArea);
+            gameOverScreen.appendChild(submit);
+
+        };
+
+    }, 1000);
 };
 
 // Function to execute once start button has been clicked
 function startQuiz() {
-  console.log("started");
-  startButton.classList.add("hide");
-  currentQuestionIndex = 0;
-  questionContainerElement.classList.remove("hide");
-  showQuestion(questions[currentQuestionIndex]);
+    console.log("started");
+    startButton.classList.add("hide");
+    currentQuestionIndex = 0;
+    questionContainerElement.classList.remove("hide");
+    showQuestion(questions[currentQuestionIndex]);
 };
 
 // Function to display question
 function showQuestion(questionObj) {
-  questionElement.innerText = questionObj.question;
-//   answerElement.innerText = questionObj.choices;
+    questionElement.innerText = questionObj.question;
+    //   answerElement.innerText = questionObj.choices;
 
-  for (let index = 0; index < questionObj.choices.length; index++) {
-      let answerButton = document.createElement("button");
-      answerButton.innerText = questionObj.choices[index].answer;
-      answerButton.classList.add("btn", "answerButton");
-      answerButton.addEventListener("click", selectAnswer);
-      answerButton.setAttribute("value", questionObj.choices[index].isAnswer);
-      answerElement.appendChild(answerButton);
-  };
-  // DISPLAY ANSWERS
-  // ATTACH EVENT TO ANSWERS
-  // EVENT SHOULD INCREASE currentQuestionIndex
+    for (let index = 0; index < questionObj.choices.length; index++) {
+        let answerButton = document.createElement("button");
+        answerButton.innerText = questionObj.choices[index].answer;
+        answerButton.classList.add("btn", "answerButton");
+        answerButton.addEventListener("click", selectAnswer);
+        answerButton.setAttribute("value", questionObj.choices[index].isAnswer);
+        answerElement.appendChild(answerButton);
+    };
+    // DISPLAY ANSWERS
+    // ATTACH EVENT TO ANSWERS
+    // EVENT SHOULD INCREASE currentQuestionIndex
+
 };
 
- function selectAnswer() {
-    debugger;
+function selectAnswer() {
     if (this.getAttribute("value") === "true") {
         currentQuestionIndex = currentQuestionIndex + 1;
     };
@@ -59,8 +94,48 @@ function showQuestion(questionObj) {
 
     questionElement.innerHTML = "";
     answerElement.innerHTML = "";
-    showQuestion(questions[currentQuestionIndex]);
+
+    if (currentQuestionIndex === 5) {
+        debugger
+        clearInterval(startTimer);
+        timeScore = timeRemaining;
+        console.log(timeScore);
+        timeDisplay.textContent = undefined;
+        highscore.textContent = "";
+
+        questionElement.innerHTML = "";
+        answerElement.innerHTML = "";
+
+        questionElement.textContent = "All done!";
+        let finalScore = document.createElement("p");
+        let initials = document.createElement("p");
+        let textArea = document.createElement("textarea");
+        textArea.textContent = "";
+        let submit = document.createElement("button");
+        submit.textContent = "Submit";
+        submit.classList.add("btn");
+
+        finalScore.textContent = "Your final score is " + timeRemaining;
+        initials.textContent = "Enter initials:";
+
+        gameOverScreen.appendChild(finalScore);
+        gameOverScreen.appendChild(initials);
+        gameOverScreen.appendChild(textArea);
+        gameOverScreen.appendChild(submit);
+
+        submit.addEventListener("click", function() {
+            localStorage.score = timeScore;
+            localStorage.initials = textArea.innerHTML;
+        });
+
+    }
+
+    else {
+        showQuestion(questions[currentQuestionIndex]);
+    };
+
 };
+
 
 // When the start quiz button is clicked (add event listerning to the start button)
 // & start the timer (set Interval)
