@@ -25,7 +25,8 @@ function startTimer() {
         timeRemaining = timeRemaining - 1;
         timeDisplay.textContent = "Time Remaining: " + timeRemaining;
 
-        if (timeRemaining < 0) {
+        // If timeRemaining = 0, Game Over
+        if (timeRemaining === 0) {
             clearInterval(interval);
             timeScore = timeRemaining;
             timeDisplay.textContent = timeRemaining;
@@ -79,8 +80,8 @@ function startQuiz() {
 // Function to display question
 function showQuestion(questionObj) {
     questionElement.innerText = questionObj.question;
-    //   answerElement.innerText = questionObj.choices;
 
+    // For loop to build the answer buttons with all 4 answer possibilities
     for (let index = 0; index < questionObj.choices.length; index++) {
         let answerButton = document.createElement("button");
         answerButton.innerText = questionObj.choices[index].answer;
@@ -95,6 +96,7 @@ function showQuestion(questionObj) {
 
 };
 
+// Function to determine if the answer selected is true or false
 function selectAnswer() {
     if (this.getAttribute("value") === "true") {
         currentQuestionIndex = currentQuestionIndex + 1;
@@ -108,6 +110,7 @@ function selectAnswer() {
     questionElement.innerHTML = "";
     answerElement.innerHTML = "";
 
+    // Once all 5 questions have been answered, Game Over
     if (currentQuestionIndex === 5) {
         clearInterval(interval);
         timeScore = timeRemaining;
@@ -139,6 +142,7 @@ function selectAnswer() {
         gameOverScreen.appendChild(textArea);
         gameOverScreen.appendChild(submit);
 
+        // Functionality for Local Storage
         submit.addEventListener("click", function () {
             localStorage.setItem("Score", timeScore);
 
@@ -148,6 +152,7 @@ function selectAnswer() {
 
     }
 
+    // If not all 5 questions have been answered, load next question
     else {
         showQuestion(questions[currentQuestionIndex]);
     };

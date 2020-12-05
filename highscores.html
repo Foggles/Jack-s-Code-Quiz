@@ -4,11 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Quiz Highscores</title>
+    <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
-    
+    <div class="container">
+        <div id="highscore-container">
+            <h1>Highscores</h1>
+            <div class="highscore-list"></div>
+        </div>
+        <div class="controls">
+            <a id="back" href="./index.html"><button id="go-back" class="back-btn btn">Go Back</button></a>
+            <button class="check-btn btn">Check for Scores</button>
+            <button id="clear-high" class="clear-btn btn">Clear Highscores</button>
+        </div>
+    </div>
 
+    <script src="./highscore.js"></script>
 </body>
 
 </html>
